@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="auto" data-contraste="normal" data-nivel="completo" data-lectura="normal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OVA: Microclase de Diseño Gráfico con Apoyo de la Inteligencia Artificial</title>
+  <meta name="description" content="Objeto Virtual de Aprendizaje interactivo para la microclase de 15 minutos sobre Diseño Gráfico con apoyo de IA.">
+  <style>
+    /* VARIABLES DE SISTEMA Y PALETA ACCESIBLE WCAG */
+    :root {
+      --fs-base: 1rem;
+      --fs: var(--fs-base);
+      --lh: 1.65;
+      --ff-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --ff-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+      
+      /* Modo Claro Editorial / Académico Moderno */
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --bg-surface-elevated: #ffffff;
+      --border-color: #cbd5e1;
+      --border-focus: #000098;
+      
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      
+      --primary: #000098;
+      --primary-hover: #00006a;
+      --primary-light: #e6e6f5;
+      --primary-text: #000098;
+      
+      --accent: #2f3fb5;
+      --accent-light: #e6e6f5;
+      
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+      
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --warning-text: #92400e;
+      
+      --info-bg: #e6e6f5;
+      --info-border: #000098;
+      --info-text: #00006a;
+      
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-full: 9999px;
+      
+      --max-w-content: 54rem;
+      --sidebar-w: 18rem;
+    }
+
+    /* MODO OSCURO */
+    [data-tema="oscuro"] {
+      --bg-body: #090d16;
+      --bg-surface: #111827;
+      --bg-surface-alt: #1f2937;
+      --bg-surface-elevated: #1e293b;
+      --border-color: #374151;
+      --border-focus: #9aa3ff;
+      
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-light: #6b7280;
+      
+      --primary: #4a54e0;
+      --primary-hover: #6b74f0;
+      --primary-light: #1b1f5c;
+      --primary-text: #b4baff;
+      
+      --accent: #8f9bff;
+      --accent-light: #1b1f5c;
+      
+      --success-bg: #064e3b;
+      --success-border: #34d399;
+      --success-text: #a7f3d0;
+      
+      --warning-bg: #78350f;
+      --warning-border: #fbbf24;
+      --warning-text: #fde68a;
+      
+      --info-bg: #14185a;
+      --info-border: #9aa3ff;
+      --info-text: #d0d4ff;
+    }
+
+    /* MODO ALTO CONTRASTE */
+    [data-contraste="alto"] {
+      --bg-body: #000000;
+      --bg-surface: #000000;
+      --bg-surface-alt: #121212;
+      --bg-surface-elevated: #1a1a1a;
+      --border-color: #ffffff;
+      --border-focus: #ffff00;
+      
+      --text-main: #ffffff;
+      --text-muted: #e5e5e5;
+      --text-light: #cccccc;
+      
+      --primary: #ffff00;
+      --primary-hover: #ffff88;
+      --primary-light: #333300;
+      --primary-text: #ffff00;
+      
+      --accent: #00ffff;
+      --accent-light: #003333;
+      
+      --success-bg: #003300;
+      --success-border: #00ff00;
+      --success-text: #ffffff;
+      
+      --warning-bg: #332200;
+      --warning-border: #ffff00;
+      --warning-text: #ffffff;
+      
+      --info-bg: #001133;
+      --info-border: #00ffff;
+      --info-text: #ffffff;
+      
+      --shadow-sm: none;
+      --shadow-md: none;
+      --shadow-lg: none;
+    }
+
+    /* MODO LECTURA AMPLIA */
+    [data-lectura="amplia"] {
+      --max-w-content: 68rem;
+    }
+
+    /* RESET Y ESTILOS BASE ACCESIBLES */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: var(--fs);
+      line-height: var(--lh);
+      font-family: var(--ff-sans);
+      color: var(--text-main);
+      background-color: var(--bg-body);
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+    a:hover { color: var(--primary-hover); }
+
+    :focus-visible {
+      outline: 3px solid var(--border-focus);
+      outline-offset: 3px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* SKIP LINK ACCESIBLE */
+    .skip-link {
+      position: absolute;
+      top: -3rem;
+      left: 1rem;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      z-index: 1000;
+      transition: top 0.2s;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* BARRA SUPERIOR FIJA */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: var(--bg-surface);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .top-bar-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .brand-badge {
+      font-size: 0.75rem;
+      padding: 0.15rem 0.5rem;
+      background-color: var(--primary-light);
+      color: var(--primary-text);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+    }
+
+    .controls-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-tool {
+      background: var(--bg-surface-alt);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.65rem;
+      font-size: 0.85rem;
+      font-family: inherit;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .btn-tool:hover { background: var(--border-color); }
+    .btn-tool.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* BARRA DE PROGRESO DE LECTURA */
+    .progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: var(--bg-surface-alt);
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      transition: width 0.1s ease-out;
+    }
+
+    /* CONTENEDOR PRINCIPAL CON SIDEBAR */
+    .app-layout {
+      max-width: 80rem;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex: 1;
+      padding: 1.5rem 1rem;
+      gap: 2rem;
+    }
+
+    /* NAVEGACIÓN LATERAL (DESKTOP) */
+    .sidebar-nav {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 4.5rem;
+      height: calc(100vh - 5.5rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+      display: none;
+    }
+
+    @media (min-width: 68rem) {
+      .sidebar-nav { display: block; }
+    }
+
+    .nav-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-card-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4rem 0.6rem;
+      border-radius: var(--radius-md);
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.15s;
+    }
+    .nav-item a:hover {
+      background: var(--bg-surface-alt);
+      color: var(--text-main);
+    }
+    .nav-item.active a {
+      background: var(--primary-light);
+      color: var(--primary-text);
+      font-weight: 600;
+    }
+
+    .zone-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--border-color);
+    }
+    .nav-item.read .zone-indicator { background: var(--success-border); }
+
+    /* CONTENIDO PRINCIPAL */
+    .main-content {
+      flex: 1;
+      max-width: var(--max-w-content);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    /* SECCIONES / ZONAS */
+    .zone-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.25rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .zone-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid var(--bg-surface-alt);
+      padding-bottom: 1rem;
+    }
+
+    .zone-tag {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary);
+      background: var(--primary-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+    }
+
+    .zone-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.25;
+    }
+
+    .zone-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+    }
+
+    /* TIPOGRAFÍA Y ESTRUCTURA */
+    p { margin-bottom: 1.15rem; color: var(--text-main); }
+    h3 { font-size: 1.25rem; margin: 1.5rem 0 0.75rem 0; color: var(--text-main); font-weight: 700; }
+    h4 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem 0; color: var(--text-main); font-weight: 600; }
+    ul, ol { margin: 0 0 1.25rem 1.5rem; color: var(--text-main); }
+    li { margin-bottom: 0.4rem; }
+
+    /* CALLOUTS */
+    .callout {
+      padding: 1.15rem 1.35rem;
+      border-radius: var(--radius-md);
+      margin: 1.25rem 0;
+      border-left: 4px solid;
+    }
+    .callout-info { background: var(--info-bg); border-color: var(--info-border); color: var(--info-text); }
+    .callout-warning { background: var(--warning-bg); border-color: var(--warning-border); color: var(--warning-text); }
+    .callout-success { background: var(--success-bg); border-color: var(--success-border); color: var(--success-text); }
+    .callout p:last-child { margin-bottom: 0; }
+
+    /* TABLAS ACCESIBLES */
+    .table-container {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    th { background: var(--bg-surface-alt); color: var(--text-main); font-weight: 700; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--bg-surface-alt); }
+
+    /* TARJETAS INTERACTIVAS Y COMPONENTES */
+    .diagram-container {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .diagram-flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .flow-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* BOTONES */
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.35rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--primary-hover); }
+
+    /* CUADERNOS DE NOTAS / TEXTAREAS */
+    .notebook-box {
+      background: var(--bg-surface-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      margin: 1.25rem 0;
+    }
+    .notebook-label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: var(--text-main);
+    }
+    .notebook-textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 0.85rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      resize: vertical;
+    }
+    .notebook-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+
+    /* CRONÓMETRO DE CLASE */
+    .timer-card {
+      background: var(--bg-surface-alt);
+      border: 2px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .timer-display {
+      font-size: 2.75rem;
+      font-weight: 800;
+      font-family: var(--ff-mono);
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    /* SIMULADOR DE CARTEL */
+    .poster-canvas {
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transition: all 0.2s ease;
+      margin-top: 1rem;
+    }
+
+    /* MEJORAS DINÁMICAS */
+    .js-reveal .zone-section{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+    .js-reveal .zone-section.in{opacity:1;transform:none}
+    .toast{position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,1rem);background:var(--text-main);color:var(--bg-body);padding:.7rem 1.2rem;border-radius:var(--radius-full);font-size:.9rem;font-weight:600;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:200;max-width:90vw;text-align:center}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .meter{height:10px;border-radius:var(--radius-full);background:var(--bg-surface);border:1px solid var(--border-color);overflow:hidden}
+    .meter>div{height:100%;width:0;background:var(--success-border);transition:width .4s ease}
+    #timer-bar{background:var(--primary);transition:width 1s linear}
+    .timer-fase{margin:.6rem 0 0;font-weight:600;color:var(--text-muted)}
+    .timer-final{color:var(--warning-text)}
+    tr.fase-activa td{background:var(--primary-light)!important;color:var(--primary-text);font-weight:600}
+    .nav-count{font-size:.8rem;color:var(--text-muted);margin:-.25rem 0 .5rem}
+    .grid-campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin:1rem 0}
+    .campo-lbl{font-weight:700;font-size:.85rem;display:block;margin-bottom:.3rem}
+    .campo{width:100%;padding:.5rem .65rem;border:1px solid var(--border-color);border-radius:var(--radius-md);background:var(--bg-surface);color:var(--text-main);font:inherit;font-size:.9rem}
+    .pb-out{background:var(--bg-surface);padding:1rem;border-radius:var(--radius-md);border:1px solid var(--border-color);font-family:var(--ff-mono);font-size:.88rem;white-space:pre-wrap;margin:.5rem 0 .75rem}
+    .poster-title{font-size:1.6rem;font-weight:800;margin-bottom:.5rem;transition:font-size .3s}
+    .poster-icon{font-size:2.5rem;margin:.5rem 0;transition:font-size .3s}
+    .poster-sub{font-size:.9rem;opacity:.85}
+    .comp-diag .poster-icon{order:-1;font-size:5rem}
+    .comp-diag .poster-title{font-size:1.05rem}
+    .poster-canvas{transition:background .3s,color .3s}
+    .chk-msg{margin:.75rem 0;padding:.6rem .9rem;border-radius:var(--radius-md);border-left:4px solid;font-size:.9rem}
+    .chk-ok{background:var(--success-bg);color:var(--success-text);border-color:var(--success-border)}
+    .chk-warn{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-border)}
+    .chk-bad{background:var(--warning-bg);color:var(--warning-text);border-color:#dc2626}
+    @media print{.js-reveal .zone-section{opacity:1!important;transform:none!important}.toast{display:none}}
+
+    .top-bar{border-bottom:3px solid var(--primary)}
+    .logo-upel{width:44px;height:44px;border-radius:var(--radius-sm);background:#fff;padding:2px;flex-shrink:0}
+    .inst{display:flex;align-items:center;gap:1rem;margin-bottom:.75rem}
+    .inst img{width:84px;height:84px;border-radius:var(--radius-md);background:#fff;border:1px solid var(--border-color)}
+    .inst strong{display:block;font-size:1.05rem;color:var(--text-main)}
+    .inst span{color:var(--text-muted);font-size:.9rem}
+    .foot-logo{width:72px;height:72px;border-radius:var(--radius-md);background:#fff;margin-bottom:.75rem}
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1rem;
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      .top-bar, .sidebar-nav, .btn-tool, .controls-group, .btn-primary, .notebook-footer {
+        display: none !important;
+      }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .zone-section { border: none !important; box-shadow: none !important; padding: 1rem 0 !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- BARRA SUPERIOR DE ACCESIBILIDAD Y CONTROL -->
+  <header class="top-bar" role="banner">
+    <div class="top-bar-inner">
+      <div class="brand-title">
+        <img class="logo-upel" alt="Logo de la UPEL" src="data:image/jpeg;base64,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">
+        <span>OVA: Diseño Gráfico con IA</span>
+        <span class="brand-badge">Microclase (15 min)</span>
+      </div>
+
+      <div class="controls-group" role="toolbar" aria-label="Herramientas de accesibilidad y lectura">
+        <button type="button" id="btn-fs-dec" class="btn-tool" title="Disminuir texto" aria-label="Disminuir texto">A−</button>
+        <button type="button" id="btn-fs-inc" class="btn-tool" title="Aumentar texto" aria-label="Aumentar texto">A+</button>
+        <button type="button" id="btn-contraste" class="btn-tool" title="Alternar alto contraste" aria-pressed="false">
+          <span>Contraste</span>
+        </button>
+        <button type="button" id="btn-tema" class="btn-tool" title="Alternar tema oscuro o claro">
+          <span id="tema-icon" aria-hidden="true">🌙</span>
+          <span id="tema-text">Tema</span>
+        </button>
+        <button type="button" id="btn-lectura" class="btn-tool" title="Alternar ancho de lectura" aria-pressed="false">
+          <span>↔ Ancho</span>
+        </button>
+        <button type="button" id="btn-voz" class="btn-tool" title="Escuchar texto de la sección activa" aria-pressed="false">
+          <span aria-hidden="true">🔊</span>
+          <span id="voz-text">Voz</span>
+        </button>
+      </div>
+    </div>
+    <div class="progress-bar-container" aria-hidden="true">
+      <div id="barra-progreso" class="progress-bar-fill"></div>
+    </div>
+  </header>
+
+  <div class="app-layout">
+    <!-- NAVEGACIÓN LATERAL DE ZONAS -->
+    <nav class="sidebar-nav" aria-label="Navegación de zonas de la planificación">
+      <div class="nav-card">
+        <div class="nav-card-title">Secciones de la Microclase</div>
+        <div id="nav-count" class="nav-count" aria-live="polite"></div>
+        <div class="meter" style="margin-bottom:.75rem" aria-hidden="true"><div id="nav-fill"></div></div>
+        <ul class="nav-list" id="lista-navegacion">
+          <li class="nav-item" data-target="zona-01"><a href="#zona-01"><span>01. Datos Generales</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-02"><a href="#zona-02"><span>02. Objetivos</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-03"><a href="#zona-03"><span>03. Enfoques Pedagógicos</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-04"><a href="#zona-04"><span>04. Planificación con IA</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-05"><a href="#zona-05"><span>05. Contexto y Perfiles</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-06"><a href="#zona-06"><span>06. Diseño Educativo</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-07"><a href="#zona-07"><span>07. Cronograma 15'</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-08"><a href="#zona-08"><span>08. Caso Práctico IA</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-09"><a href="#zona-09"><span>09. Lista de Cotejo</span><span class="zone-indicator"></span></a></li>
+          <li class="nav-item" data-target="zona-10"><a href="#zona-10"><span>10. Guion y Conclusión</span><span class="zone-indicator"></span></a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido-principal" class="main-content" role="main">
+
+      <!-- ZONA 01: DATOS GENERALES -->
+      <section id="zona-01" class="zone-section" aria-labelledby="t-z01">
+        <div class="zone-header">
+          <div class="inst"><img data-logo alt="Logo de la UPEL"><div><strong>Universidad Pedagógica Experimental Libertador</strong><span>UPEL</span></div></div>
+          <span class="zone-tag">Zona 01 • Encuadre General</span>
+          <h1 id="t-z01" class="zone-title">Creación de un cartel publicitario utilizando la Inteligencia Artificial</h1>
+          <p class="zone-subtitle">Planificación educativa para microclase interactiva de 15 minutos.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <p><strong>Tema Central:</strong> Cómo utilizar herramientas de Inteligencia Artificial para planificar, diseñar y mejorar una pieza gráfica, sin sustituir la creatividad, el criterio estético ni las decisiones del estudiante.</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Parámetro</th>
+                <th>Detalle de la Microclase</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Área de conocimiento</strong></td>
+                <td>Diseño Gráfico</td>
+              </tr>
+              <tr>
+                <td><strong>Duración</strong></td>
+                <td>15 minutos</td>
+              </tr>
+              <tr>
+                <td><strong>Modalidad</strong></td>
+                <td>Presencial o virtual</td>
+              </tr>
+              <tr>
+                <td><strong>Público objetivo</strong></td>
+                <td>Estudiantes de educación media, formación técnica o adultos en capacitación</td>
+              </tr>
+              <tr>
+                <td><strong>Enfoque educativo</strong></td>
+                <td>Pedagógico y andragógico</td>
+              </tr>
+              <tr>
+                <td><strong>Estrategia principal</strong></td>
+                <td>Aprendizaje práctico basado en un reto</td>
+              </tr>
+              <tr>
+                <td><strong>Producto final</strong></td>
+                <td>Boceto de cartel publicitario con mensaje, colores y organización visual definidos</td>
+              </tr>
+              <tr>
+                <td><strong>Evaluación</strong></td>
+                <td>Diagnóstica, formativa y práctica</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ZONA 02: OBJETIVOS -->
+      <section id="zona-02" class="zone-section" aria-labelledby="t-z02">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 02 • Propósito Educativo</span>
+          <h2 id="t-z02" class="zone-title">Objetivos General y Específicos</h2>
+        </div>
+
+        <h3>Objetivo General</h3>
+        <p>Diseñar una experiencia de aprendizaje de 15 minutos que permita a los participantes comprender y aplicar los principios básicos del diseño gráfico mediante el uso responsable de herramientas de Inteligencia Artificial, integrando objetivos educativos, contenidos, actividades, recursos, estrategias metodológicas y evaluación.</p>
+
+        <h3>Objetivos Específicos</h3>
+        <ul>
+          <li><strong>Identificar</strong> al menos tres elementos fundamentales del diseño gráfico: color, tipografía y composición.</li>
+          <li><strong>Utilizar</strong> una herramienta de IA para generar una propuesta visual o una idea creativa para un cartel publicitario.</li>
+          <li><strong>Elaborar o mejorar</strong> un boceto gráfico que comunique un mensaje claro a un público determinado.</li>
+          <li><strong>Reconocer</strong> la importancia de verificar los resultados de la IA y respetar los derechos de autor.</li>
+        </ul>
+      </section>
+
+      <!-- ZONA 03: ENFOQUES PEDAGÓGICOS -->
+      <section id="zona-03" class="zone-section" aria-labelledby="t-z03">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 03 • Fundamento Metodológico</span>
+          <h2 id="t-z03" class="zone-title">Enfoque Pedagógico y Andragógico</h2>
+        </div>
+
+        <div class="diagram-flow">
+          <div class="flow-card">
+            <h4 style="color: var(--primary);">Enfoque Pedagógico</h4>
+            <p>Se centra en orientar el aprendizaje mediante explicaciones breves, ejemplos visuales, demostraciones y acompañamiento docente.</p>
+            <p><strong>Aplicación:</strong> mostrar un cartel, explicar sus componentes y guiar el primer ejercicio.</p>
+          </div>
+          <div class="flow-card">
+            <h4 style="color: var(--primary);">Enfoque Andragógico</h4>
+            <p>Se orienta al aprendizaje de adultos, aprovechando sus experiencias previas, autonomía, intereses y necesidades prácticas.</p>
+            <p><strong>Aplicación:</strong> plantear un encargo real, como promocionar un emprendimiento, servicio o evento.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-success" style="margin-top: 1.5rem;">
+          <p><strong>Integración de ambos enfoques:</strong> El docente explica y acompaña, mientras el participante toma decisiones, experimenta con la IA y aplica lo aprendido a una situación concreta. En ambos casos, la tecnología se mantiene estrictamente al servicio de los objetivos educativos.</p>
+        </div>
+      </section>
+
+      <!-- ZONA 04: PLANIFICACIÓN EDUCATIVA CON IA -->
+      <section id="zona-04" class="zone-section" aria-labelledby="t-z04">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 04 • Integración Tecnológica</span>
+          <h2 id="t-z04" class="zone-title">Planificación Educativa con Apoyo en la IA</h2>
+        </div>
+
+        <p>La planificación educativa es el proceso mediante el cual el docente organiza los objetivos, contenidos, actividades, recursos y evaluaciones para lograr aprendizajes concretos. Al incorporar la IA, este proceso puede enriquecerse mediante la generación de ideas, la creación de ejemplos visuales, la adaptación de instrucciones y la elaboración de materiales didácticos.</p>
+
+        <h3>Usos clave de la IA en Diseño Gráfico</h3>
+        <ul>
+          <li>Proponer conceptos creativos para carteles, logotipos y publicaciones digitales.</li>
+          <li>Generar paletas de colores y sugerencias tipográficas.</li>
+          <li>Elaborar bocetos o referencias visuales.</li>
+          <li>Crear preguntas, rúbricas y ejercicios prácticos.</li>
+          <li>Ofrecer alternativas de diseño que el estudiante pueda comparar y mejorar.</li>
+        </ul>
+
+        <div class="notebook-box">
+          <span class="notebook-label">Generador / Simulador de Prompt Docente para IA:</span>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+            Ejemplo de instrucción estructurada lista para enviar a un asistente de IA:
+          </p>
+          <div class="grid-campos">
+            <div><label class="campo-lbl" for="pb-tema">Tema del cartel</label><input id="pb-tema" class="campo" maxlength="40" value="el reciclaje"></div>
+            <div><label class="campo-lbl" for="pb-pub">Público</label><select id="pb-pub" class="campo"><option>estudiantes de educación media</option><option>adultos en formación</option><option>emprendedores principiantes</option></select></div>
+            <div><label class="campo-lbl" for="pb-tono">Tono</label><select id="pb-tono" class="campo"><option>cercano y motivador</option><option>sobrio y profesional</option><option>divertido y juvenil</option></select></div>
+          </div>
+          <div id="pb-out" class="pb-out" aria-live="polite"></div>
+          <button type="button" id="pb-copy" class="btn-tool">📋 Copiar prompt</button>
+        </div>
+      </section>
+
+      <!-- ZONA 05: CONTEXTO Y CARACTERÍSTICAS -->
+      <section id="zona-05" class="zone-section" aria-labelledby="t-z05">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 05 • Contexto y Participantes</span>
+          <h2 id="t-z05" class="zone-title">Características del Contexto, Alumno y Docente</h2>
+        </div>
+
+        <h3>5.1. Características del Contexto</h3>
+        <p>Aula con acceso a computadora o teléfono inteligente, conexión a Internet cuando sea posible y una herramienta de IA disponible. Si no hay conexión, el docente puede llevar ejemplos generados previamente y desarrollar el ejercicio con papel y lápices de colores.</p>
+
+        <h3>5.2. Características del Alumno</h3>
+        <ul>
+          <li><strong>Estudiantes jóvenes:</strong> Requieren instrucciones guiadas, ejemplos visuales y acompañamiento paso a paso.</li>
+          <li><strong>Adultos en formación:</strong> Vinculan el ejercicio a experiencias laborales, emprendimientos o necesidades reales de comunicación.</li>
+          <li><strong>Principiantes vs. Experimentados:</strong> Desde explicaciones sencillas sobre color y legibilidad hasta profundizaciones en jerarquía e identidad de marca.</li>
+        </ul>
+
+        <h3>5.3. Características del Docente</h3>
+        <p>El docente actúa como planificador, orientador, mediador tecnológico y evaluador. Debe saber formular instrucciones claras para la IA, promover la creatividad y supervisar el uso ético, la privacidad y los derechos de autor.</p>
+      </section>
+
+      <!-- ZONA 06: ELEMENTOS DE DISEÑO EDUCATIVO -->
+      <section id="zona-06" class="zone-section" aria-labelledby="t-z06">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 06 • Estructura Curricular</span>
+          <h2 id="t-z06" class="zone-title">Elementos Fundamentales del Diseño Educativo</h2>
+        </div>
+
+        <h3>6.1 y 6.2. Programa y Competencias</h3>
+        <p><strong>Competencia:</strong> Utiliza principios básicos de comunicación visual y herramientas de IA para proponer una solución gráfica pertinente a una necesidad de comunicación.</p>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Dimensión</th>
+                <th>Aprendizaje Esperado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Conceptual</strong></td>
+                <td>Reconoce color, tipografía y composición como elementos del diseño gráfico.</td>
+              </tr>
+              <tr>
+                <td><strong>Procedimental</strong></td>
+                <td>Formula una instrucción para generar una propuesta y desarrolla un boceto.</td>
+              </tr>
+              <tr>
+                <td><strong>Actitudinal</strong></td>
+                <td>Evalúa críticamente la propuesta de IA y toma decisiones responsables.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>6.3. Desglose de Contenidos</h3>
+        <div class="diagram-flow">
+          <div class="flow-card">
+            <h4>A. Conceptuales</h4>
+            <p>Diseño gráfico y comunicación visual; teoría del color y contraste; tipografía y legibilidad; composición y jerarquía; funciones y límites de la IA.</p>
+          </div>
+          <div class="flow-card">
+            <h4>B. Procedimentales</h4>
+            <p>Identificar público y mensaje; redactar instrucción para IA; generar/seleccionar idea; organizar título e imagen; revisar y mejorar el boceto.</p>
+          </div>
+          <div class="flow-card">
+            <h4>C. Actitudinales</h4>
+            <p>Creatividad y experimentación; responsabilidad digital; respeto a derechos de autor; pensamiento crítico ante los resultados de la IA.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">6.6. Medios y Recursos</h3>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Recurso</th>
+                <th>Función Didáctica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Computadora / Teléfono inteligente</td>
+                <td>Acceder a las herramientas digitales de diseño e IA.</td>
+              </tr>
+              <tr>
+                <td>Herramienta de IA generativa (p. ej. ChatGPT)</td>
+                <td>Proponer ideas, colores y opciones de composición.</td>
+              </tr>
+              <tr>
+                <td>Editor gráfico o presentación (p. ej. Canva)</td>
+                <td>Organizar los elementos visuales de la pieza.</td>
+              </tr>
+              <tr>
+                <td>Proyector / Pantalla compartida</td>
+                <td>Mostrar la demostración guiada al grupo.</td>
+              </tr>
+              <tr>
+                <td>Papel y lápices de colores</td>
+                <td>Elaborar el boceto sin depender de conectividad.</td>
+              </tr>
+              <tr>
+                <td>Rúbrica / Lista de cotejo</td>
+                <td>Valorar el aprendizaje alcanzado en la sesión.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ZONA 07: CRONOGRAMA INTERACTIVO -->
+      <section id="zona-07" class="zone-section" aria-labelledby="t-z07">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 07 • Gestión del Tiempo</span>
+          <h2 id="t-z07" class="zone-title">Cronograma Detallado de la Microclase (15 Minutos)</h2>
+          <p class="zone-subtitle">Temporizador integrado para controlar el desarrollo en tiempo real.</p>
+        </div>
+
+        <!-- Cronómetro de Clase -->
+        <div class="timer-card">
+          <h4>Cronómetro de Control de la Microclase</h4>
+          <div id="timer-display" class="timer-display">15:00</div>
+          <div class="meter" aria-hidden="true"><div id="timer-bar"></div></div>
+          <p id="timer-fase" class="timer-fase" aria-live="polite">Pulsa «Iniciar Clase» para comenzar</p>
+          <div style="display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.5rem;">
+            <button type="button" id="btn-start-timer" class="btn-primary">▶ Iniciar Clase</button>
+            <button type="button" id="btn-pause-timer" class="btn-tool">⏸ Pausar</button>
+            <button type="button" id="btn-reset-timer" class="btn-tool">↺ Reiniciar</button>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tiempo</th>
+                <th>Fase</th>
+                <th>Acción del Docente</th>
+                <th>Acción del Estudiante</th>
+                <th>Evaluación</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>0–2 min</strong></td>
+                <td>Inicio y motivación</td>
+                <td>Presenta dos carteles y pregunta cuál comunica mejor y por qué.</td>
+                <td>Observa, compara y expresa ideas previas.</td>
+                <td>Diagnóstica: respuestas orales.</td>
+              </tr>
+              <tr>
+                <td><strong>2–5 min</strong></td>
+                <td>Explicación</td>
+                <td>Explica color, tipografía, composición y el papel de la IA.</td>
+                <td>Identifica los elementos en un ejemplo.</td>
+                <td>Preguntas breves.</td>
+              </tr>
+              <tr>
+                <td><strong>5–9 min</strong></td>
+                <td>Demostración de IA</td>
+                <td>Introduce una instrucción y muestra sugerencias para el cartel.</td>
+                <td>Analiza y selecciona elementos adecuados.</td>
+                <td>Observación del análisis.</td>
+              </tr>
+              <tr>
+                <td><strong>9–13 min</strong></td>
+                <td>Actividad práctica</td>
+                <td>Solicita un boceto con título, imagen, máximo tres colores y mensaje breve.</td>
+                <td>Dibuja o crea una propuesta y toma decisiones propias.</td>
+                <td>Lista de cotejo.</td>
+              </tr>
+              <tr>
+                <td><strong>13–15 min</strong></td>
+                <td>Cierre y evaluación</td>
+                <td>Invita a presentar bocetos y explicar una decisión gráfica.</td>
+                <td>Presenta su trabajo y explica el aporte de la IA.</td>
+                <td>Retroalimentación y autoevaluación.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ZONA 08: EJEMPLO PRÁCTICO Y SIMULADOR -->
+      <section id="zona-08" class="zone-section" aria-labelledby="t-z08">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 08 • Taller Interactivo</span>
+          <h2 id="t-z08" class="zone-title">Ejemplo Práctico y Mesa de Bocetado Digital</h2>
+          <p class="zone-subtitle">Simula la toma de decisiones del estudiante combinando el mensaje y los criterios gráficos.</p>
+        </div>
+
+        <p><strong>Consigna de clase:</strong> Diseñar el concepto de un cartel para la campaña de reciclaje escolar bajo el mensaje: <em>«Reciclar hoy, cuidar el mañana»</em>.</p>
+
+        <!-- Simulador interactivo de combinación gráfica -->
+        <div class="diagram-container">
+          <h4 style="margin-top:0;">Mesa de Práctica: Selección de Criterios Gráficos</h4>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+            <div>
+              <label for="select-color" style="font-weight:700; font-size:0.85rem; display:block; margin-bottom:0.3rem;">1. Paleta de Colores:</label>
+              <select id="select-color" class="btn-tool" style="width:100%;">
+                <option value="ecologica">Ecológica (Verde, Azul, Blanco)</option>
+                <option value="alerta">Alerta (Amarillo, Negro, Blanco)</option>
+                <option value="calida">Cálida (Naranja, Terracota, Crema)</option>
+                <option value="pastel">Pastel suave (¡revisa el contraste!)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="select-font" style="font-weight:700; font-size:0.85rem; display:block; margin-bottom:0.3rem;">2. Estilo Tipográfico:</label>
+              <select id="select-font" class="btn-tool" style="width:100%;">
+                <option value="sans">Sans-Serif Bold (Moderna e Impactante)</option>
+                <option value="serif">Serif Clásica (Tradicional)</option>
+                <option value="mono">Monospace (Técnica / Digital)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="select-comp" style="font-weight:700; font-size:0.85rem; display:block; margin-bottom:0.3rem;">3. Jerarquía Visual:</label>
+              <select id="select-comp" class="btn-tool" style="width:100%;">
+                <option value="centrada">Título Grande Arriba + Icono Central</option>
+                <option value="diagonal">Icono Grande + Texto Inferior</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid-campos">
+            <div><label class="campo-lbl" for="poster-txt">4. Mensaje del cartel:</label><input id="poster-txt" class="campo" maxlength="40" value="Reciclar hoy, cuidar el mañana"></div>
+            <div><label class="campo-lbl" for="select-icon">5. Imagen central:</label><select id="select-icon" class="campo"><option>🌱 ♻️</option><option>🌍</option><option>💧</option><option>📚</option></select></div>
+          </div>
+          <div id="poster-canvas" class="poster-canvas">
+            <div id="poster-title" class="poster-title">RECICLAR HOY, CUIDAR EL MAÑANA</div>
+            <div id="poster-icon" class="poster-icon" aria-hidden="true">🌱 ♻️</div>
+            <div id="poster-sub" class="poster-sub">Campaña de Concientización Escolar</div>
+          </div>
+          <p id="poster-check" class="chk-msg" role="status"></p>
+          <button type="button" id="btn-azar" class="btn-tool">🎲 Probar una combinación al azar</button>
+        </div>
+
+        <div class="notebook-box">
+          <label for="cuaderno-justificacion" class="notebook-label">Reflexión de Cierre (Pregunta del Docente):</label>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+            ¿La IA diseñó por ti o te ayudó a tomar decisiones? Explica por qué elegiste estos colores y tipografía para tu cartel.
+          </p>
+          <textarea id="cuaderno-justificacion" class="notebook-textarea" placeholder="Escribe tu justificación de diseño aquí..."></textarea>
+          <div class="notebook-footer">
+            <span id="status-cuaderno">Guardado automáticamente</span>
+            <button type="button" id="btn-exportar" class="btn-tool" style="background: var(--primary); color:#fff;">
+              <span>📥 Descargar mi plan de trabajo (.txt)</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZONA 09: INSTRUMENTO DE EVALUACIÓN -->
+      <section id="zona-09" class="zone-section" aria-labelledby="t-z09">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 09 • Evaluación</span>
+          <h2 id="t-z09" class="zone-title">Instrumento de Evaluación: Lista de Cotejo</h2>
+          <p class="zone-subtitle">Valoración cualitativa y cuantitativa del aprendizaje alcanzado (Máximo: 10 puntos).</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Criterio de Evaluación</th>
+                <th>Puntaje</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Identifica color, tipografía y composición como elementos clave del diseño.</td>
+                <td>2 pts</td>
+                <td><input type="checkbox" class="chk-eval" data-puntos="2" aria-label="Criterio 1"></td>
+              </tr>
+              <tr>
+                <td>Formula o utiliza una instrucción (prompt) pertinente para la IA.</td>
+                <td>2 pts</td>
+                <td><input type="checkbox" class="chk-eval" data-puntos="2" aria-label="Criterio 2"></td>
+              </tr>
+              <tr>
+                <td>Presenta un boceto con un mensaje claro, legible y enfocado al público.</td>
+                <td>3 pts</td>
+                <td><input type="checkbox" class="chk-eval" data-puntos="3" aria-label="Criterio 3"></td>
+              </tr>
+              <tr>
+                <td>Organiza los elementos visuales de forma coherente en el espacio.</td>
+                <td>2 pts</td>
+                <td><input type="checkbox" class="chk-eval" data-puntos="2" aria-label="Criterio 4"></td>
+              </tr>
+              <tr>
+                <td>Explica una decisión propia y demuestra uso responsable de la IA.</td>
+                <td>1 pt</td>
+                <td><input type="checkbox" class="chk-eval" data-puntos="1" aria-label="Criterio 5"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Puntaje Total Calculado: <strong id="score-total">0</strong> / 10 Puntos</span>
+          <span id="score-nivel" style="font-weight:700;">Selecciona los criterios</span>
+        </div>
+        <div class="meter" aria-hidden="true"><div id="score-bar"></div></div>
+      </section>
+
+      <!-- ZONA 10: GUION Y CONCLUSIÓN -->
+      <section id="zona-10" class="zone-section" aria-labelledby="t-z10">
+        <div class="zone-header">
+          <span class="zone-tag">Zona 10 • Guion y Cierre</span>
+          <h2 id="t-z10" class="zone-title">Guion Narrativo del Docente y Conclusión</h2>
+        </div>
+
+        <h3>Guion Breve de Presentación (15 Minutos)</h3>
+        
+        <div class="callout callout-info">
+          <p><strong>Inicio (0–2 min):</strong> "Buenos días. Hoy aprenderemos cómo utilizar la Inteligencia Artificial como apoyo en el Diseño Gráfico. Para comenzar: ¿qué hace que un cartel llame nuestra atención y comunique un mensaje de manera efectiva?"</p>
+        </div>
+
+        <div class="callout callout-info">
+          <p><strong>Desarrollo conceptual (2–5 min):</strong> "Consideramos tres elementos esenciales: color (sensaciones), tipografía (lectura) y composición (orden). La IA nos ayuda a generar ideas y sugerir combinaciones."</p>
+        </div>
+
+        <div class="callout callout-info">
+          <p><strong>Demostración (5–9 min):</strong> "Para nuestro cartel de reciclaje escolar, solicitaremos a la IA una recomendación con una instrucción precisa. Analizaremos sus opciones pero nosotros tomamos la decisión final."</p>
+        </div>
+
+        <div class="callout callout-info">
+          <p><strong>Actividad práctica (9–13 min):</strong> "Diseñaremos el boceto para 'Reciclar hoy, cuidar el mañana'. Incluiremos título, imagen central y colores coherentes según nuestro criterio."</p>
+        </div>
+
+        <div class="callout callout-info">
+          <p><strong>Cierre (13–15 min):</strong> "La IA es una herramienta de apoyo, no un sustituto del pensamiento creativo. Un buen diseñador comunica ideas y resuelve problemas con responsabilidad. ¿Qué elemento cambiarían de su boceto y por qué?"</p>
+        </div>
+
+        <h3>Conclusión de la Planificación</h3>
+        <p>La integración de la Inteligencia Artificial en esta microclase permite articular objetivos, contenidos, actividades y evaluación en una experiencia práctica e intensiva de 15 minutos. El aprendizaje significativo surge cuando la tecnología se combina con la creatividad, el pensamiento crítico y la capacidad humana de comunicar visualmente.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer class="site-footer" role="contentinfo">
+    <img data-logo class="foot-logo" alt="Logo de la UPEL">
+    <p><strong>Objeto Virtual de Aprendizaje (OVA) — Microclase de Diseño Gráfico con IA</strong></p>
+    <p>Basado en el documento oficial de Planificación Educativa • Formato interactivo autocontenido con Diseño Universal para el Aprendizaje (DUA)</p>
+  </footer>
+
+  <!-- LÓGICA JAVASCRIPT VANILLA -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ESTADOS Y REFERENCIAS
+      const htmlEl = document.documentElement;
+      const btnFsInc = document.getElementById('btn-fs-inc');
+      const btnFsDec = document.getElementById('btn-fs-dec');
+      const btnContraste = document.getElementById('btn-contraste');
+      const btnTema = document.getElementById('btn-tema');
+      const temaIcon = document.getElementById('tema-icon');
+      const btnLectura = document.getElementById('btn-lectura');
+      const btnVoz = document.getElementById('btn-voz');
+      const vozText = document.getElementById('voz-text');
+      const barraProgreso = document.getElementById('barra-progreso');
+      const navItems = document.querySelectorAll('.nav-item');
+      const sections = document.querySelectorAll('.zone-section');
+
+      let currentFs = parseFloat(localStorage.getItem('ova_dg_fs') || '1.0');
+      let currentContraste = localStorage.getItem('ova_dg_contraste') || 'normal';
+      let currentTema = localStorage.getItem('ova_dg_tema') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'claro');
+      let currentLectura = localStorage.getItem('ova_dg_lectura') || 'normal';
+
+      function aplicarConfiguraciones() {
+        htmlEl.style.setProperty('--fs', `${currentFs}rem`);
+        htmlEl.setAttribute('data-contraste', currentContraste);
+        htmlEl.setAttribute('data-tema', currentTema);
+        htmlEl.setAttribute('data-lectura', currentLectura);
+        btnContraste.setAttribute('aria-pressed', currentContraste === 'alto');
+        btnLectura.setAttribute('aria-pressed', currentLectura === 'amplia');
+        temaIcon.textContent = currentTema === 'oscuro' ? '☀️' : '🌙';
+
+        const textGuardado = localStorage.getItem('ova_dg_justificacion') || '';
+        const cuaderno = document.getElementById('cuaderno-justificacion');
+        if (cuaderno) cuaderno.value = textGuardado;
+      }
+      aplicarConfiguraciones();
+
+      // ACCESIBILIDAD CONTROLES
+      btnFsInc.addEventListener('click', () => {
+        if (currentFs < 1.35) {
+          currentFs += 0.05;
+          htmlEl.style.setProperty('--fs', `${currentFs.toFixed(2)}rem`);
+          localStorage.setItem('ova_dg_fs', currentFs.toFixed(2));
+        }
+      });
+
+      btnFsDec.addEventListener('click', () => {
+        if (currentFs > 0.85) {
+          currentFs -= 0.05;
+          htmlEl.style.setProperty('--fs', `${currentFs.toFixed(2)}rem`);
+          localStorage.setItem('ova_dg_fs', currentFs.toFixed(2));
+        }
+      });
+
+      btnContraste.addEventListener('click', () => {
+        currentContraste = currentContraste === 'alto' ? 'normal' : 'alto';
+        htmlEl.setAttribute('data-contraste', currentContraste);
+        btnContraste.setAttribute('aria-pressed', currentContraste === 'alto');
+        localStorage.setItem('ova_dg_contraste', currentContraste);
+      });
+
+      btnTema.addEventListener('click', () => {
+        currentTema = currentTema === 'oscuro' ? 'claro' : 'oscuro';
+        htmlEl.setAttribute('data-tema', currentTema);
+        temaIcon.textContent = currentTema === 'oscuro' ? '☀️' : '🌙';
+        localStorage.setItem('ova_dg_tema', currentTema);
+      });
+
+      btnLectura.addEventListener('click', () => {
+        currentLectura = currentLectura === 'amplia' ? 'normal' : 'amplia';
+        htmlEl.setAttribute('data-lectura', currentLectura);
+        btnLectura.setAttribute('aria-pressed', currentLectura === 'amplia');
+        localStorage.setItem('ova_dg_lectura', currentLectura);
+      });
+
+      // LECTOR VOZ
+      let synth = window.speechSynthesis;
+      let isSpeaking = false;
+      if (!synth) {
+        btnVoz.style.display = 'none';
+      } else {
+        btnVoz.addEventListener('click', () => {
+          if (isSpeaking) {
+            synth.cancel();
+            isSpeaking = false;
+            vozText.textContent = 'Voz';
+            btnVoz.setAttribute('aria-pressed', 'false');
+          } else {
+            let visibleSection = null;
+            sections.forEach(sec => {
+              const rect = sec.getBoundingClientRect();
+              if (rect.top <= 200 && rect.bottom >= 150) visibleSection = sec;
+            });
+            const textToRead = visibleSection ? visibleSection.innerText : document.body.innerText;
+            const utter = new SpeechSynthesisUtterance(textToRead.slice(0, 1500));
+            utter.lang = 'es-ES';
+            utter.onend = () => {
+              isSpeaking = false;
+              vozText.textContent = 'Voz';
+              btnVoz.setAttribute('aria-pressed', 'false');
+            };
+            synth.speak(utter);
+            isSpeaking = true;
+            vozText.textContent = 'Pausar';
+            btnVoz.setAttribute('aria-pressed', 'true');
+          }
+        });
+      }
+
+      // CRONÓMETRO DE CLASE
+      let timerSeconds = 15 * 60;
+      let timerInterval = null;
+      const timerDisplay = document.getElementById('timer-display');
+      const btnStart = document.getElementById('btn-start-timer');
+      const btnPause = document.getElementById('btn-pause-timer');
+      const btnReset = document.getElementById('btn-reset-timer');
+
+      function updateTimerDisplay() {
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        timerDisplay.textContent = `${m}:${s}`;
+        onTick(timerSeconds);
+      }
+
+      btnStart.addEventListener('click', () => {
+        if (!timerInterval) {
+          timerInterval = setInterval(() => {
+            if (timerSeconds > 0) {
+              timerSeconds--;
+              updateTimerDisplay();
+            } else {
+              clearInterval(timerInterval);
+              timerInterval = null;
+              toast('¡Tiempo concluido! Microclase de 15 minutos finalizada.');
+            }
+          }, 1000);
+        }
+      });
+
+      btnPause.addEventListener('click', () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+      });
+
+      btnReset.addEventListener('click', () => {
+        if (timerInterval) {
+          clearInterval(timerInterval);
+          timerInterval = null;
+        }
+        timerSeconds = 15 * 60;
+        updateTimerDisplay();
+      });
+
+      // SIMULADOR DE BOCETO DE CARTEL
+      const selectColor = document.getElementById('select-color');
+      const selectFont = document.getElementById('select-font');
+      const posterCanvas = document.getElementById('poster-canvas');
+      const posterTitle = document.getElementById('poster-title');
+
+      function actualizarBoceto() {
+        // Color
+        if (selectColor.value === 'ecologica') {
+          posterCanvas.style.background = '#ecfdf5';
+          posterCanvas.style.color = '#065f46';
+        } else if (selectColor.value === 'alerta') {
+          posterCanvas.style.background = '#fef3c7';
+          posterCanvas.style.color = '#78350f';
+        } else {
+          posterCanvas.style.background = '#fff7ed';
+          posterCanvas.style.color = '#9a3412';
+        }
+
+        // Tipografía
+        if (selectFont.value === 'sans') {
+          posterTitle.style.fontFamily = 'system-ui, sans-serif';
+        } else if (selectFont.value === 'serif') {
+          posterTitle.style.fontFamily = 'Georgia, serif';
+        } else {
+          posterTitle.style.fontFamily = 'monospace';
+        }
+      }
+
+      selectColor.addEventListener('change', actualizarBoceto);
+      selectFont.addEventListener('change', actualizarBoceto);
+
+      // EVALUACIÓN (LISTA DE COTEJO)
+      const chkEvals = document.querySelectorAll('.chk-eval');
+      const scoreTotal = document.getElementById('score-total');
+      const scoreNivel = document.getElementById('score-nivel');
+
+      function calcularPuntaje() {
+        let total = 0;
+        chkEvals.forEach(chk => {
+          if (chk.checked) total += parseInt(chk.getAttribute('data-puntos'));
+        });
+        scoreTotal.textContent = total;
+
+        if (total >= 9) scoreNivel.textContent = 'Logro Destacado (9–10 pts)';
+        else if (total >= 7) scoreNivel.textContent = 'Logro Satisfactorio (7–8 pts)';
+        else if (total >= 5) scoreNivel.textContent = 'Aprendizaje en Proceso (5–6 pts)';
+        else scoreNivel.textContent = 'Requiere Acompañamiento (0–4 pts)';
+      }
+
+      chkEvals.forEach(chk => chk.addEventListener('change', calcularPuntaje));
+
+      // GUARDADO DE NOTAS
+      const cuaderno = document.getElementById('cuaderno-justificacion');
+      const statusCuaderno = document.getElementById('status-cuaderno');
+      let debounceTimeout;
+
+      cuaderno.addEventListener('input', (e) => {
+        statusCuaderno.textContent = 'Guardando...';
+        clearTimeout(debounceTimeout);
+        debounceTimeout = setTimeout(() => {
+          localStorage.setItem('ova_dg_justificacion', e.target.value);
+          statusCuaderno.textContent = 'Guardado localmente';
+        }, 400);
+      });
+
+      // DESCARGA CLIENT-SIDE TXT
+      const btnExportar = document.getElementById('btn-exportar');
+      btnExportar.addEventListener('click', () => {
+        const justificacion = localStorage.getItem('ova_dg_justificacion') || '(Sin respuesta registrada)';
+        const fecha = new Date().toLocaleString('es-PA');
+
+        const txt = 
+`===================================================================
+PLANIFICACIÓN Y ACTIVIDAD: MICROCLASE DE DISEÑO GRÁFICO CON IA
+Fecha: ${fecha}
+===================================================================
+
+[JUSTIFICACIÓN DE DISEÑO DEL ESTUDIANTE]
+${justificacion}
+
+[BOCETO DEL CARTEL]
+Mensaje: ${document.getElementById('poster-txt').value}
+Paleta: ${selectColor.selectedOptions[0].text}
+Tipografía: ${selectFont.selectedOptions[0].text}
+Jerarquía: ${document.getElementById('select-comp').selectedOptions[0].text}
+
+[EVALUACIÓN ALCANZADA]
+Puntaje: ${scoreTotal.textContent} / 10 Puntos
+Nivel: ${scoreNivel.textContent}
+
+===================================================================
+Documento generado localmente desde el OVA de Diseño Gráfico.
+===================================================================`;
+
+        const blob = new Blob([txt], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Microclase_Diseno_Grafico_IA_${new Date().toISOString().slice(0,10)}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+
+      // PROGRESO DE LECTURA Y SCROLLSPY
+      function actualizarProgreso() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        barraProgreso.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+
+        let currentSectionId = '';
+        sections.forEach(sec => {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= 180) {
+            currentSectionId = sec.id;
+            const navLink = document.querySelector(`.nav-item[data-target="${sec.id}"]`);
+            if (navLink) navLink.classList.add('read');
+          }
+        });
+
+        navItems.forEach(item => {
+          if (item.getAttribute('data-target') === currentSectionId) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', actualizarProgreso, { passive: true });
+      actualizarProgreso();
+
+      // ===== MEJORAS DINÁMICAS =====
+      const $ = id => document.getElementById(id);
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const toastEl = document.createElement('div');
+      toastEl.className = 'toast';
+      toastEl.setAttribute('role', 'status');
+      document.body.appendChild(toastEl);
+      let toastT;
+      function toast(msg) {
+        toastEl.textContent = msg;
+        toastEl.classList.add('show');
+        clearTimeout(toastT);
+        toastT = setTimeout(() => toastEl.classList.remove('show'), 3200);
+      }
+
+      if ('IntersectionObserver' in window && !reduceMotion) {
+        htmlEl.classList.add('js-reveal');
+        const io = new IntersectionObserver(es => es.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        }), { threshold: 0.08 });
+        sections.forEach(sec => io.observe(sec));
+      }
+
+      // Contador de secciones leídas
+      const navCount = $('nav-count'), navFill = $('nav-fill');
+      let todoLeido = false;
+      function contarLeidas() {
+        if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) navItems[navItems.length - 1].classList.add('read');
+        const n = document.querySelectorAll('.nav-item.read').length;
+        navCount.textContent = `${n} de ${navItems.length} secciones leídas`;
+        navFill.style.width = `${n / navItems.length * 100}%`;
+        if (n === navItems.length && !todoLeido) { todoLeido = true; toast('Recorriste toda la microclase.'); }
+      }
+      window.addEventListener('scroll', contarLeidas, { passive: true });
+      contarLeidas();
+
+      // Cronómetro conectado al cronograma
+      const FASES = [['Inicio y motivación', 0], ['Explicación', 120], ['Demostración de IA', 300], ['Actividad práctica', 540], ['Cierre y evaluación', 780]];
+      const filas = document.querySelectorAll('#zona-07 tbody tr');
+      const tBar = $('timer-bar'), tFase = $('timer-fase');
+      let faseAnt = -1;
+      function onTick(rest) {
+        const el = 900 - rest;
+        tBar.style.width = `${el / 9}%`;
+        timerDisplay.classList.toggle('timer-final', rest > 0 && rest <= 120);
+        let i = -1;
+        if (timerInterval || el > 0) FASES.forEach((f, k) => { if (el >= f[1]) i = k; });
+        if (rest === 0) i = 4;
+        filas.forEach((tr, k) => tr.classList.toggle('fase-activa', k === i));
+        tFase.textContent = rest === 0 ? 'Microclase terminada' : i < 0 ? 'Pulsa «Iniciar Clase» para comenzar' : `Fase ${i + 1} de 5: ${FASES[i][0]}`;
+        if (i >= 0 && i !== faseAnt && timerInterval) toast(`Fase ${i + 1}: ${FASES[i][0]}`);
+        faseAnt = i;
+      }
+
+      // Generador de prompt
+      const pbT = $('pb-tema'), pbP = $('pb-pub'), pbN = $('pb-tono'), pbO = $('pb-out');
+      function armarPrompt() {
+        pbO.textContent = `Actúa como asistente educativo de Diseño Gráfico. Propón una idea para un cartel sobre ${pbT.value.trim() || 'un tema a elegir'} dirigido a ${pbP.value}, con un tono ${pbN.value}. Sugiere una paleta de tres colores, dos opciones tipográficas y una composición sencilla. Explica por qué las elecciones facilitan la lectura del mensaje.`;
+      }
+      [pbT, pbP, pbN].forEach(e => e.addEventListener('input', armarPrompt));
+      armarPrompt();
+      $('pb-copy').addEventListener('click', async () => {
+        try { await navigator.clipboard.writeText(pbO.textContent); toast('Prompt copiado. Pégalo en tu herramienta de IA.'); }
+        catch (err) {
+          const r = document.createRange(); r.selectNodeContents(pbO);
+          const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+          toast('Texto seleccionado: cópialo con Ctrl+C.');
+        }
+      });
+
+      // Mesa de bocetado: todo conectado + contraste en vivo
+      const PAL = { ecologica: ['#ecfdf5', '#065f46'], alerta: ['#fef3c7', '#78350f'], calida: ['#fff7ed', '#9a3412'], pastel: ['#fef9c3', '#facc15'] };
+      const FUENTES = { sans: 'system-ui, sans-serif', serif: 'Georgia, serif', mono: 'ui-monospace, monospace' };
+      const selComp = $('select-comp'), selIcon = $('select-icon'), posterTxt = $('poster-txt'), posterCheck = $('poster-check');
+      function lum(h) {
+        const c = [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255).map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+      }
+      function pintarCartel() {
+        const [bg, fg] = PAL[selectColor.value];
+        posterCanvas.style.background = bg;
+        posterCanvas.style.color = fg;
+        posterTitle.style.fontFamily = FUENTES[selectFont.value];
+        posterTitle.textContent = (posterTxt.value.trim() || 'Tu mensaje aquí').toUpperCase();
+        $('poster-icon').textContent = selIcon.value;
+        posterCanvas.classList.toggle('comp-diag', selComp.value === 'diagonal');
+        const a = lum(bg), b = lum(fg);
+        const r = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+        const txt = `Contraste ${r.toFixed(1)}:1 — `;
+        if (r >= 4.5) { posterCheck.className = 'chk-msg chk-ok'; posterCheck.textContent = txt + 'Legible: cumple el mínimo AA para texto.'; }
+        else if (r >= 3) { posterCheck.className = 'chk-msg chk-warn'; posterCheck.textContent = txt + 'Justo: solo sirve para texto muy grande.'; }
+        else { posterCheck.className = 'chk-msg chk-bad'; posterCheck.textContent = txt + 'Bajo: el mensaje se pierde. Prueba otra paleta.'; }
+      }
+      [selectColor, selectFont, selComp, selIcon, posterTxt].forEach(e => { e.addEventListener('input', pintarCartel); e.addEventListener('change', pintarCartel); });
+      $('btn-azar').addEventListener('click', () => {
+        [selectColor, selectFont, selComp, selIcon].forEach(sl => { sl.selectedIndex = Math.floor(Math.random() * sl.options.length); });
+        pintarCartel();
+        toast('Nueva combinación: ¿se lee bien el mensaje?');
+      });
+      pintarCartel();
+
+      // Lista de cotejo: medidor y persistencia
+      const sBar = $('score-bar');
+      let guardados = [];
+      try { guardados = JSON.parse(localStorage.getItem('ova_dg_chk') || '[]'); } catch (err) {}
+      chkEvals.forEach((c, i) => { c.checked = !!guardados[i]; });
+      function pintarMedidor() {
+        sBar.style.width = `${Number(scoreTotal.textContent) * 10}%`;
+        try { localStorage.setItem('ova_dg_chk', JSON.stringify([...chkEvals].map(c => c.checked))); } catch (err) {}
+      }
+      chkEvals.forEach(c => c.addEventListener('change', () => {
+        pintarMedidor();
+        if (c.checked && Number(scoreTotal.textContent) >= 9) toast('¡Logro destacado!');
+      }));
+      calcularPuntaje();
+      pintarMedidor();
+      onTick(timerSeconds);
+
+      // Logo UPEL: una sola copia embebida, reutilizada y como favicon
+      const logoSrc = document.querySelector('.logo-upel').src;
+      document.querySelectorAll('img[data-logo]').forEach(i => { i.src = logoSrc; });
+      const fav = document.createElement('link'); fav.rel = 'icon'; fav.href = logoSrc; document.head.appendChild(fav);
+    })();
+  </script>
+</body>
+</html>
